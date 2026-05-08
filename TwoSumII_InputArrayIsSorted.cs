@@ -8,8 +8,6 @@ public class TwoSumII_InputArrayIsSorted
 
         while (i < j)
         {
-            Console.WriteLine($"{numbers[i]} + {numbers[j]} = {numbers[i] + numbers[j]}");
-
             if (numbers[i] + numbers[j] == target)
             {
                 return [i + 1, j + 1];
