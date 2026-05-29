@@ -29,22 +29,22 @@ public class ListNode(int val = 0, ListNode? next = null)
         return head;
     }
 
-    public override bool Equals(object? obj)
-    {
-        return obj is ListNode listNode && Equals(listNode);
-    }
+    // public override bool Equals(object? obj)
+    // {
+    //     return obj is ListNode listNode && Equals(listNode);
+    // }
 
-    public override int GetHashCode()
-    {
-        return HashCode.Combine(val, next);
-    }
-
-    private bool Equals(ListNode? other)
-    {
-        return other is not null
-               && val == other.val
-               && Equals(next, other.next);
-    }
+    // public override int GetHashCode()
+    // {
+    //     return HashCode.Combine(val, next);
+    // }
+    //
+    // private bool Equals(ListNode? other)
+    // {
+    //     return other is not null
+    //            && val == other.val
+    //            && Equals(next, other.next);
+    // }
 
     public override string ToString()
     {
