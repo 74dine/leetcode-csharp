@@ -4,19 +4,22 @@ namespace LeetcodeCSharp;
 
 public class LinkedListCycle
 {
-    public bool HasCycle(ListNode head)
+    public bool HasCycle(ListNode? head)
     {
-        var distinctNodes = new HashSet<ListNode>();
+        if (head is null) return false;
 
-        ListNode? current = head;
-        while (current != null)
+        var cursor = head;
+        var fast = head.next;
+
+        while (cursor is not null)
         {
-            if (!distinctNodes.Add(current))
+            if (cursor == fast)
             {
                 return true;
             }
 
-            current = current.next;
+            cursor = cursor.next;
+            fast = fast?.next?.next;
         }
 
         return false;
@@ -31,5 +34,19 @@ public class LinkedListCycle
             .next = new ListNode(0)
             .next = new ListNode(-4)
             .next = cycleStart));
+    }
+
+    [Fact]
+    public void LC_Case_2()
+    {
+        var cycleStart = new ListNode(1);
+
+        Assert.True(HasCycle(cycleStart.next = new ListNode(2).next = cycleStart));
+    }
+
+    [Fact]
+    public void LC_Case_3()
+    {
+        Assert.False(HasCycle(new ListNode(1)));
     }
 }
