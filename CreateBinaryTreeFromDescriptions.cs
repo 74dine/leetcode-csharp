@@ -12,8 +12,8 @@ public class Solution
 {
     public TreeNode CreateBinaryTree(int[][] descriptions)
     {
-        var nodes = new Dictionary<int, TreeNode>(descriptions.Length);
-        var children = new HashSet<int>(descriptions.Length - 1);
+        var nodes = new Dictionary<int, TreeNode>(descriptions.Length + 1);
+        var children = new HashSet<int>(descriptions.Length);
 
         foreach (var node in descriptions)
         {
