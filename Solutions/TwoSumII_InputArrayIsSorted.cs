@@ -1,4 +1,4 @@
-﻿namespace LeetcodeCSharp;
+﻿namespace LeetcodeCSharp.Solutions;
 
 public class TwoSumII_InputArrayIsSorted
 {

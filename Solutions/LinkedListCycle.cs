@@ -1,6 +1,6 @@
 using LeetcodeCSharp.Models;
 
-namespace LeetcodeCSharp;
+namespace LeetcodeCSharp.Solutions;
 
 public class LinkedListCycle
 {

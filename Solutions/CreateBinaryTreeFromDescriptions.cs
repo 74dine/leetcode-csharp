@@ -1,4 +1,4 @@
-namespace LeetcodeCSharp;
+namespace LeetcodeCSharp.Solutions;
 
 // ReSharper disable once ClassNeverInstantiated.Global
 public class TreeNode(int val = 0, TreeNode? left = null, TreeNode? right = null)

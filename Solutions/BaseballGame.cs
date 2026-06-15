@@ -1,4 +1,4 @@
-namespace LeetcodeCSharp;
+namespace LeetcodeCSharp.Solutions;
 
 public class BaseballGame
 {
