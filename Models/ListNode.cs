@@ -2,7 +2,7 @@ namespace LeetcodeCSharp.Models;
 
 public class ListNode(int val = 0, ListNode? next = null)
 {
-    private readonly int val = val;
+    public readonly int val = val;
     public ListNode? next = next;
 
     public static ListNode? FromList(ICollection<int> values)
@@ -54,5 +54,27 @@ public class ListNode(int val = 0, ListNode? next = null)
             values.Add(node.val);
 
         return string.Join(" -> ", values);
+    }
+}
+
+public class ListNodeComparer : IEqualityComparer<ListNode>
+{
+    public bool Equals(ListNode? a, ListNode? b)
+    {
+        while (a is not null && b is not null)
+        {
+            if (a.val != b.val)
+                return false;
+
+            a = a.next;
+            b = b.next;
+        }
+
+        return a is null && b is null;
+    }
+
+    public int GetHashCode(ListNode obj)
+    {
+        return 0;
     }
 }
