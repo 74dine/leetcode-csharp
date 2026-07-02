@@ -4,24 +4,23 @@ public class LongestSubstringWithoutRepeatingCharacters
 {
     public int LengthOfLongestSubstring(string s)
     {
-        HashSet<char> distinct = new();
-        int start = 0, end = 0, max = 0;
+        Span<uint> posHistory = stackalloc uint[char.MaxValue + 1];
+        uint start = 0, max = 0;
 
-        for (; end < s.Length; end++)
+        for (uint i = 0; i < s.Length; i++)
         {
-            while (distinct.Contains(s[end]))
+            if (posHistory[s[(int)i]] > start)
             {
-                distinct.Remove(s[start]);
-                start++;
+                start = posHistory[s[(int)i]];
             }
 
-            if (distinct.Add(s[end]) && distinct.Count > max)
-            {
-                max = distinct.Count;
-            }
+            posHistory[s[(int)i]] = i + 1;
+
+            uint l = i - start + 1;
+            max = Math.Max(max, l);
         }
 
-        return max;
+        return (int)max;
     }
 
     [Fact]
@@ -43,15 +42,14 @@ public class LongestSubstringWithoutRepeatingCharacters
     }
 
     [Fact]
-    public void Does_Handle_All_Unique()
+    public void LC_Case_4()
     {
-        Assert.Equal(4, LengthOfLongestSubstring("abcd"));
+        Assert.Equal(5, LengthOfLongestSubstring("qrsvbspk"));
     }
 
     [Fact]
-    public void Does()
+    public void Does_Handle_All_Unique()
     {
-        Assert.Equal(5, LengthOfLongestSubstring("qrsvbspk"));
-        // bcdefa
+        Assert.Equal(4, LengthOfLongestSubstring("abcd"));
     }
 }
