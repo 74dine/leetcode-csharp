@@ -1,23 +1,27 @@
-using Xunit.Abstractions;
-
 namespace LeetcodeCSharp.Solutions;
 
-public class RemoveCoveredIntervalsQ(ITestOutputHelper _out)
+public class RemoveCoveredIntervalsQ
 {
     public int RemoveCoveredIntervals(int[][] intervals)
     {
-        return intervals
-            .OrderBy(x => x[0])
-            .ThenByDescending(x => x[1])
-            .Aggregate(new List<int[]>(), (agg, cur) =>
-            {
-                if (agg.Count == 0 || agg.Last()[0] > cur[0] || cur[1] > agg.Last()[1])
-                {
-                    agg.Add(cur);
-                }
+        Array.Sort(intervals,
+            (ints, ints1) => ints[0].Equals(ints1[0])
+                ? ints1[1].CompareTo(ints[1])
+                : ints[0].CompareTo(ints1[0]));
 
-                return agg;
-            }).Count;
+        int j = 0, count = 1;
+        for (int i = 0; i < intervals.Length; i++)
+        {
+            if (intervals[j][0] <= intervals[i][0] && intervals[i][1] <= intervals[j][1])
+            {
+                continue;
+            }
+
+            j = i;
+            count++;
+        }
+
+        return count;
     }
 
     [Fact]
