@@ -7,7 +7,7 @@ I have solved using C#.
 
 Date of creation: 05/08/2026
 
-Last updated: 07/02/2026
+Last updated: 07/06/2026
 
-Last problem: [Longest Substring Without Repeating Characters](Solutions/LongestSubstringWithoutRepeatingCharacters.cs)
-([LeetCode](https://leetcode.com/problems/longest-substring-without-repeating-characters))
+Last problem: [Remove Covered Intervals](Solutions/LongestSubstringWithoutRepeatingCharacters.cs)
+([LeetCode](https://leetcode.com/problems/remove-covered-intervals/submissions/2058202158))
